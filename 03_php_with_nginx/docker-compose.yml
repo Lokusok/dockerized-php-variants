@@ -1,0 +1,27 @@
+services:
+  php:
+    container_name: php_fpm
+    build:
+      context: "./php"
+    volumes:
+      - "./:/usr/share/nginx/html"
+    networks:
+      - lemp
+
+  web:
+    container_name: nginx_server
+    build:
+      context: "./nginx"
+    ports:
+      - "8080:80"
+    volumes:
+      - "./:/usr/share/nginx/html"
+      - "./conf:/etc/nginx/conf.d"
+    links:
+      - php
+    networks:
+      - lemp
+
+networks:
+  lemp:
+    driver: bridge
