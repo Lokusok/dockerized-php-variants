@@ -1,0 +1,17 @@
+{
+  "name": "root/html",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Root\\Html\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Lokusok"
+    }
+  ],
+  "require": {
+    "symfony/http-foundation": "^7.1"
+  }
+}
