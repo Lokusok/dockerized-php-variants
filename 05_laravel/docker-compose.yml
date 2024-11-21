@@ -24,12 +24,24 @@ services:
         networks:
             - lemp
 
+    redis:
+        container_name: redis_server
+        image: redis:latest
+        links:
+            - php
+        networks:
+            - lemp
+        ports:
+            - "6379:6379"
+
     db:
         container_name: mariadb_server
         image: mariadb
         restart: always
         environment:
             MARIADB_ROOT_PASSWORD: root
+        volumes:
+            - "./db:/var/lib/mysql"
         networks:
             - lemp
 
